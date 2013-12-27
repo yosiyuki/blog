@@ -1,0 +1,11 @@
+<%= image_tag('logo.png') %>
+<div class="button"><%= link_to '日記一覧', posts_path %></div>
+<br/>
+<% @posts.each do |post| %>
+  <b><%= post.created_at.year %>年<%= post.created_at.month %>月<%= post.created_at.day %>日の日記</b>
+  <span class="button"><%= link_to '詳細', post %></span>
+  <br/>
+  <div class="text_indent"><%= post.text %></div>
+  <hr width='50%'/>
+  <br/>
+<% end %>

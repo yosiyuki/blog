@@ -1,0 +1,75 @@
+$border: 3px ridge #8A2BE2;
+
+html
+{
+  background-color: #FFFFFF;
+}
+
+body
+{
+  background-color: #F0F8FF;
+  width: 700px;
+  margin: auto;
+  padding: 10px;
+  border: $border;
+}
+
+img
+{
+  width: 150px;
+  height: 150;
+  position: relative;
+}
+
+.button
+{
+  & a:hover
+  {
+    font-weight: bold;
+  }
+  & a:link
+  {
+    color: #FF4500;
+  }
+  & a:visited
+  {
+    color: #FF4500;
+  }
+  & a:active
+  {
+    font-style: italic
+  }
+}
+
+.text_indent
+{
+  text-indent: 50px;
+}
+
+table
+{
+  td
+  {
+    border: 1px #000000 solid;
+    text-align: center;
+  }
+  td.id
+  {
+    width: 50px;
+  }
+  td.day
+  {
+    width: 100px;
+  }
+  td.text
+  {
+    text-align: left;
+    width: 400px;
+  }
+  td.button
+  {
+    text-align: center;
+    border: none;
+    width: 50px;
+  }
+}

@@ -1,0 +1,4 @@
+<%= image_tag('logo.png') %>
+<h2><%= @post.created_at.year %>年<%= @post.created_at.month %>月<%= @post.created_at.day %>日の日記</h2>
+<p><%= @post.text %></p>
+<span class="button"><%= link_to 'ホーム', controller: 'posts', action: 'homepage' %></span>

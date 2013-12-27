@@ -1,0 +1,4 @@
+<%= image_tag('logo.png') %>
+<h2><%= Time.now.year %>年<%= Time.now.month %>月<%= Time.now.day %>日の日記</h2>
+<%= render 'form' %>
+<span class="button"><%= link_to 'ホーム', controller: 'posts', action: 'homepage' %></span>

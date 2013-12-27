@@ -1,0 +1,28 @@
+<%= image_tag('logo.png') %>
+<h2>日記一覧</h2>
+<span class="button"><%= link_to 'ホーム', controller: 'posts', action: 'homepage' %></span>
+|
+<span class="button"><%= link_to '新しい日記を書く', new_post_path %></span>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>日</th>
+    <th>内容</th>
+  </tr>
+  <% id = 1 %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td class='id'><%= id %></td>
+      <td class='day'><%= post.created_at.year %>/<%= post.created_at.month %>/<%= post.created_at.day %></td>
+      <td class='text'>
+        <%= post.text.first(22) %>
+        <% if post.text.length > 22 %>
+          (...)
+        <% end %>
+      </td>
+      <td class='button'><span class="button"><%= link_to '編集', edit_post_path(post) %></span></td>
+      <td class='button'><span class="button"><%= link_to '削除', post_path(post), method: :delete, data: {confirm: '削除して宜しいでしょうか？'} %></span></td>
+    </tr>
+    <% id += 1 %>
+  <% end %>
+</table>
