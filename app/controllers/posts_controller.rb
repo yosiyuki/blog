@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with name: 'tnkjapan', password: 'nihon', except: [:index, :show, :homepage]
+  http_basic_authenticate_with name: 'tnkjapan', password: 'nihon', except: [:show, :homepage]
   def homepage
     @posts = Post.order('created_at DESC').all
   end
