@@ -1,15 +1,19 @@
 <%= form_for @post do |form| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h3>エラーがあります、チェックしてください。</h3>
+    <div id='error_explanation' %>
+      <div class='alert alert-danger'><h3>エラーがあります、チェックしてください。</h3></div>
       <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <p><%= form.text_area :text, cols: 45, rows: 15 %></p>
-  <p><%= form.submit :'登録する'%></p>
+  <p><%= form.text_area :text, cols: 75, rows: 15 %></p>
+  <p>
+    <%= link_to 'ホーム', root_path, class: 'btn btn-primary btn-lg', style: 'width: 100px' %>
+    <%= link_to '日記一覧', posts_path, class: 'btn btn-info btn-lg', style: 'width: 100px' %>
+    <%= form.submit :'登録する', class: 'btn btn-success btn-lg', style: 'width: 100px' %>
+  </p>
 <% end %>

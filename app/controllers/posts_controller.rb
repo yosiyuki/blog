@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  http_basic_authenticate_with name: 'tnkjapan', password: 'nihon', except: [:show, :homepage]
+  http_basic_authenticate_with name: "yuto", password: "yasunaga", except: [:homepage]
   def homepage
-    @posts = Post.order('created_at DESC').all
+    @posts = Post.order('created_at DESC').first(10)
   end
 
   def index
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @posts.each do |post|
       if post.created_at.year == Time.now.year && post.created_at.month == Time.now.month && post.created_at.day == Time.now.day
-        # まだ分からないです。
+        redirect_to post
       end
     end
   end

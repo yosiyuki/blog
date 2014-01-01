@@ -1,4 +1,14 @@
-<%= image_tag('logo.png') %>
-<h2><%= Time.now.year %>年<%= Time.now.month %>月<%= Time.now.day %>日の日記</h2>
-<%= render 'form' %>
-<span class="button"><%= link_to 'ホーム', root_path %></span>
+<%= image_tag '/images/logo.png' %>
+<div class='panel panel-success'>
+  <div class='panel-heading'>
+    <h2><%= Time.now.year %>年<%= Time.now.month %>月<%= Time.now.day %>日の日記を書く</h2>
+  </div>
+  <div class='panel-body'>
+    <table>
+      <tr>
+        <td><%= render 'form' %></td>
+        <td><%= image_tag '/images/book.png', width: 250, height: 300 %></td>
+      </tr>
+    </table>
+  </div>
+</div>

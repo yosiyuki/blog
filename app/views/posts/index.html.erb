@@ -1,28 +1,30 @@
-<%= image_tag('logo.png') %>
-<h2>日記一覧</h2>
-<span class="button"><%= link_to 'ホーム', root_url %></span>
-|
-<span class="button"><%= link_to '新しい日記を書く', new_post_path %></span>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>日</th>
-    <th>内容</th>
+<%= image_tag '/images/logo.png' %>
+<div>
+  <%= link_to 'ホーム', root_path, class: 'btn btn-primary', style: 'width: 150px' %>
+  <%= link_to '今日の日記を書く', new_post_path, class: 'btn btn-info', style: 'width: 150px' %>
+</div>
+<br/>
+<table class='table-bordered'>
+  <tr class='alert alert-success'>
+    <td width=50px align=right>ID</td>
+    <td width=100px align=right>日</td>
+    <td width=500px align=center>内容</td>
   </tr>
-  <% id = 1 %>
+  <% i=0 %>
   <% @posts.each do |post| %>
+    <% i+=1 %>
     <tr>
-      <td class='id'><%= id %></td>
-      <td class='day'><%= post.created_at.year %>/<%= post.created_at.month %>/<%= post.created_at.day %></td>
-      <td class='text'>
-        <%= post.text.first(22) %>
-        <% if post.text.length > 22 %>
-          (...)
+      <td align=right><%= i %></td>
+      <td align=right><%= post.created_at.strftime('%Y/%m/%d') %></td>
+      <td>
+        <%= post.text.first(30) %>
+        <% if post.text.length > 30 %>
+          <b>[...]</b>
         <% end %>
       </td>
-      <td class='button'><span class="button"><%= link_to '編集', edit_post_path(post) %></span></td>
-      <td class='button'><span class="button"><%= link_to '削除', post_path(post), method: :delete, data: {confirm: '削除して宜しいでしょうか？'} %></span></td>
+      <td><%= link_to '詳細', post, class: 'btn btn-success btn-sm', style: 'width: 50px' %></td>
+      <td><%= link_to '編集', edit_post_path(post), class: 'btn btn-warning btn-sm', style: 'width: 50px' %></td>
+      <td><%= link_to '削除', post_path(post), method: :delete, data: {confirm: '削除して宜しいですか？'}, class: 'btn btn-danger btn-sm', style: 'width: 50px' %></td>
     </tr>
-    <% id += 1 %>
   <% end %>
 </table>

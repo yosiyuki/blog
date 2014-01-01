@@ -1,11 +1,24 @@
-<%= image_tag('logo.png') %>
-<div class="button"><%= link_to '日記一覧', posts_path %></div>
+<%= image_tag '/images/logo.png' %>
+<br/>
+<div><%= link_to '日記一覧', posts_path, class: 'btn btn-info' %></div>
 <br/>
 <% @posts.each do |post| %>
-  <b><%= post.created_at.year %>年<%= post.created_at.month %>月<%= post.created_at.day %>日の日記</b>
-  <span class="button"><%= link_to '詳細', post %></span>
-  <br/>
-  <div class="text_indent"><%= post.text %></div>
-  <hr width='50%'/>
-  <br/>
+  <div class='panel panel-info'>
+    <div class='panel-heading'>
+      <b><%= post.created_at.year %>年<%= post.created_at.month %>月<%= post.created_at.day %>日の日記</b>
+      <span class='label label-warning'>
+        <% if post.created_at.monday? %>月曜日
+        <% elsif post.created_at.tuesday? %>火曜日
+        <% elsif post.created_at.wednesday? %>水曜日
+        <% elsif post.created_at.thursday? %>木曜日
+        <% elsif post.created_at.friday? %>金曜日
+        <% elsif post.creted_at.saturday? %>土曜日
+        <% else %>日曜日
+        <% end %>
+      </span>
+    </div>
+    <div class='panel-body'>
+      <%= post.text.gsub(/\n/, '<br/>').html_safe %>
+    </div>
+  </div>
 <% end %>
