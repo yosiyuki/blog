@@ -50,6 +50,10 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def view
+    @posts_by_month = Post.where(:created_at.day => 2)
+  end
+
   private
   def post_params
     params.require(:post).permit(:text)

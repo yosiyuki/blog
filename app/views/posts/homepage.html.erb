@@ -1,5 +1,15 @@
 <%= render 'cover' %>
-<div><%= link_to '日記一覧', posts_path, class: 'btn btn-info' %></div>
+<div>
+  <%= link_to '日記一覧', posts_path, class: 'btn btn-info' %>
+  <div class='btn-group'>
+    <button class='btn btn-success dropdown-toggle' data-toggle='dropdown'>
+      2014年 <span class='caret'></span>
+    </button>
+    <ul class='dropdown-menu' role='menu' align='right'>
+      <li><%= link_to 'Not available', root_path %></li>
+    </ul>
+  </div>
+</div>
 <br/>
 <% @posts.each do |post| %>
   <div class='panel panel-info'>

@@ -1,5 +1,6 @@
 Blog::Application.routes.draw do
   get "posts/homepage"
+  get 'posts/view'
   root 'posts#homepage'
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
