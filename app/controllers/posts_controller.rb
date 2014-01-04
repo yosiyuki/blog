@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def view
-    @posts_by_month = Post.where(:created_at.day => 2)
+    @posts_by_month = Post.where(created_at: (Time.now.month))
   end
 
   private

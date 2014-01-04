@@ -1,0 +1,6 @@
+<% if @posts_by_month.empty? == true %>
+  <script>alert('Empty')</script>
+<% end %>
+<% @posts_by_month.each do |p| %>
+  <%= p.text %>
+<% end %>

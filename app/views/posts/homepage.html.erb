@@ -1,4 +1,5 @@
 <%= render 'cover' %>
+<a name='top'></a>
 <div>
   <%= link_to '日記一覧', posts_path, class: 'btn btn-info' %>
   <div class='btn-group'>
@@ -30,4 +31,5 @@
       <%= post.text.gsub(/\n/, '<br/>').html_safe %>
     </div>
   </div>
+  <center><a href='#top'><button class='btn btn-success btn-lg' style='width: 500px'>上に戻る</button></a></center>
 <% end %>
