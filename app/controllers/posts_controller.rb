@@ -28,15 +28,15 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by_created_at(params[:id])
+    @post = Post.find_by(params[:year], params[:month], params[:day])
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.find_by(params[:year], params[:month], params[:day])
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Post.find_by(params[:year], params[:month], params[:day])
     if @post.update(post_params)
       redirect_to @post
     else
@@ -45,7 +45,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @post = Post.find_by(params[:year], params[:month], params[:day])
     @post.destroy
     redirect_to posts_path
   end

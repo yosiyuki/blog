@@ -1,6 +1,8 @@
 Blog::Application.routes.draw do
   get "posts/homepage"
-  match 'posts/:year/:month/:day', to: 'posts#show', via: [:get, :post]
+  match '/posts/:year/:month/:day', to: 'posts#show', via: [:get, :post, :patch]
+  match '/posts/:year/:month/:day', to: 'posts#destroy', via: :delete
+  match '/posts/:year/:month/:day/edit', to: 'posts#edit', via: [:get, :post, :patch]
   root 'posts#homepage'
   resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
