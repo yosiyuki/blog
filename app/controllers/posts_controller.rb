@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @posts = Post.all
     @posts.each do |post|
       if post.created_at.year == Time.now.year && post.created_at.month == Time.now.month && post.created_at.day == Time.now.day
-        redirect_to post
+        render text: '今日の日記はもう書かれました。アップデートする場合は、『編集』をクリックしたください。', layout: true
       end
     end
   end
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by_created_at(params[:id])
   end
 
   def edit
